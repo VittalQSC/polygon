@@ -8,6 +8,8 @@ import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
 import * as express from 'express';
 import {join} from 'path';
 
+const https = require('https');
+
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
@@ -37,6 +39,26 @@ app.set('views', DIST_FOLDER);
 app.get('*.*', express.static(DIST_FOLDER, {
   maxAge: '1y'
 }));
+
+app.get('/positions', (req, res, next) => {
+  https.get('https://jobs.github.com/positions.json', resp => {
+    let data = '';
+  
+    // A chunk of data has been recieved.
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+  
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+      let positions = JSON.parse(data);
+      res.json(positions);
+    });
+  
+  }).on("error", (err) => {
+    res.json({ err: 'not recieved positions' });
+  });  
+});
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
