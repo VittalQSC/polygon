@@ -1,5 +1,8 @@
-<ul>
-  <li *ngFor="let jobInfo of jobList">
-    <job></job>
-  </li>
-</ul>
+<div>
+  <ul>
+    <li *ngFor="let jobInfo of jobList">
+      <job [company]="jobInfo.company"></job>
+    </li>
+  </ul>
+  <loading *ngIf="jobList.length < 1"></loading>
+</div>

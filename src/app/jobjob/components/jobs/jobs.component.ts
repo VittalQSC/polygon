@@ -7,7 +7,7 @@ import { JobsService } from '../../services/job.service';
   styleUrls: ['./jobs.component.css']
 })
 export class JobsComponent implements OnInit {
-  jobList
+  jobList:any[] = [];
 
   constructor(private jobsService: JobsService) { }
 
