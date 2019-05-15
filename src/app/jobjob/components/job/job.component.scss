@@ -1,0 +1,39 @@
+$card-background: #fff;
+$default-spacing: 20px;
+$break-small: 450px;
+$break-medium: 700px;
+$break-large: 1024px;
+
+.job {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1000px;
+    
+    background-color: $card-background;
+    border-radius: 6px;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+    padding: $default-spacing;
+    text-align: center;
+    margin: 10px;
+    transition: width 300ms ease-in-out;
+    
+    @media screen and (min-width: $break-small) and (max-width: $break-medium) {
+      width: 500px;
+    }
+    @media screen and (min-width: $break-medium) and (max-width: $break-large) {
+      width: 300px;
+    }
+    @media screen and (min-width: $break-large) {
+      width: 230px;
+    }
+  }
+
+  .job__logo {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
