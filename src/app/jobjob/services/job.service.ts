@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class JobsService {
-    url = '/positions'
+    url = '/positions';
 
     constructor(private http: HttpClient) { }
-    
-    getJobs(searchState):Observable<any[]> {
+
+    getJobs(searchState): Observable<any[]> {
         const params = Object.keys(searchState).reduce((paramsObj, key) => {
-            if(key && key !== '') {
+            if (key && key !== '') {
                 paramsObj[key] = searchState[key];
             }
             return paramsObj;

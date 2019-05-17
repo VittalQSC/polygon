@@ -5,16 +5,16 @@ const initialState = new SearchState('', '', WorkLoad.Any);
 export function searchReducer(state: SearchState = initialState, action: SetSearchState) {
     switch (action.type) {
         case JobjobActionTypes.SetSearchState:
-            return {...action.payload};    
+            return {...action.payload};
         default:
             return {...state};
     }
 }
 
-export function jobsReducer(state:[] = [], action: JobsLoadedSuccess | JobsLoading) {
+export function jobsReducer(state: [] = [], action: JobsLoadedSuccess | JobsLoading) {
     switch (action.type) {
         case JobjobActionTypes.JobsLoadedSuccess:
-            return [...action.payload];    
+            return [...action.payload];
         default:
             return [...state];
     }
@@ -23,9 +23,9 @@ export function jobsReducer(state:[] = [], action: JobsLoadedSuccess | JobsLoadi
 export function jobsLoadingReducer(state: boolean = false, action: JobsLoadedSuccess | JobsLoading) {
     switch (action.type) {
         case JobjobActionTypes.JobsLoadedSuccess:
-            return false;    
+            return false;
         case JobjobActionTypes.JobsLoading:
-            return true;    
+            return true;
         default:
             return state;
     }

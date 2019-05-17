@@ -1,7 +1,7 @@
 import { SearchState } from '../../classes';
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromJobjob from "./jobjob.reducer";
+import * as fromJobjob from './jobjob.reducer';
 
 export interface JobjobState {
     searchState: SearchState;

@@ -10,7 +10,7 @@ import { JobjobState } from '../../store/reducers';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  jobList:Observable<any> = this.store.select(selectJobs);
+  jobList: Observable<any> = this.store.select(selectJobs);
   isLoading: Observable<boolean> = this.store.select(selectJobsLoading);
 
   constructor(private store: Store<JobjobState>) { }

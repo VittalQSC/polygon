@@ -12,14 +12,14 @@ export class JobsEffects {
   .pipe(
     ofType(ActionTypes.SetSearchState),
     map(() => new JobsLoading())
-  )
+  );
 
   @Effect()
   loadJobs$ = this.actions$
   .pipe(
     ofType(ActionTypes.SetSearchState),
     map((action: SetSearchState) => action.payload),
-    mergeMap(searchState => 
+    mergeMap(searchState =>
       this.jobsService.getJobs(searchState)
           .pipe(
             map(jobs => (new JobsLoadedSuccess(jobs)))

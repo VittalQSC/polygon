@@ -7,7 +7,7 @@ enum WorkLoad {
   Any = 'any',
   FullTime = 'Full Time',
   NotFullTime = 'Not full time'
-};
+}
 
 class SearchState {
   constructor(
@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
 
   workLoadOptions = Object.keys(WorkLoad).map(wl => WorkLoad[wl]);
 
-  searchState$: Observable<SearchState>
+  searchState$: Observable<SearchState>;
 
   constructor(private store: Store<{ searchState: SearchState }>) { }
 

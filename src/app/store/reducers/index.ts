@@ -24,7 +24,7 @@ enum WorkLoad {
     Any = 'any',
     FullTime = 'Full Time',
     NotFullTime = 'Not full time'
-};
+}
 
 class SearchState {
     constructor(
@@ -38,16 +38,16 @@ const initialState = new SearchState('', '', WorkLoad.Any);
 export function searchReducer(state: SearchState = initialState, action: SetSearchState) {
     switch (action.type) {
         case ActionTypes.SetSearchState:
-            return {...action.payload};    
+            return {...action.payload};
         default:
             return {...state};
     }
 }
 
-export function jobsReducer(state:[] = [], action: JobsLoadedSuccess | JobsLoading) {
+export function jobsReducer(state: [] = [], action: JobsLoadedSuccess | JobsLoading) {
     switch (action.type) {
         case ActionTypes.JobsLoadedSuccess:
-            return [...action.payload];    
+            return [...action.payload];
         default:
             return [...state];
     }
@@ -56,9 +56,9 @@ export function jobsReducer(state:[] = [], action: JobsLoadedSuccess | JobsLoadi
 export function jobsLoadingReducer(state: boolean = false, action: JobsLoadedSuccess | JobsLoading) {
     switch (action.type) {
         case ActionTypes.JobsLoadedSuccess:
-            return false;    
+            return false;
         case ActionTypes.JobsLoading:
-            return true;    
+            return true;
         default:
             return state;
     }

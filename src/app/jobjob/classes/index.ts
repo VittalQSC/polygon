@@ -2,7 +2,7 @@ export enum WorkLoad {
     Any = 'any',
     FullTime = 'Full Time',
     NotFullTime = 'Not full time'
-};
+}
 
 export class SearchState {
     constructor(
