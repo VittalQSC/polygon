@@ -41,7 +41,10 @@ app.get('*.*', express.static(DIST_FOLDER, {
 }));
 
 app.get('/positions', (req, res, next) => {
-  https.get('https://jobs.github.com/positions.json', resp => {
+  const queryString = '?' + Object.keys(req.query).map((key) => {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(req.query[key])
+  }).join('&');
+  https.get(`https://jobs.github.com/positions.json${queryString}`, resp => {
     let data = '';
   
     // A chunk of data has been recieved.

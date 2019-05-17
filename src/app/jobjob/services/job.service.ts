@@ -9,7 +9,12 @@ export class JobsService {
     constructor(private http: HttpClient) { }
     
     getJobs(searchState):Observable<any[]> {
-        console.log('searchState', searchState);
-        return this.http.get<any[]>(this.url);
+        const params = Object.keys(searchState).reduce((paramsObj, key) => {
+            if(key && key !== '') {
+                paramsObj[key] = searchState[key];
+            }
+            return paramsObj;
+        }, {});
+        return this.http.get<any[]>(this.url, { params });
     }
 }
