@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { SetSearchState } from '../../../store/reducers';
 
 enum WorkLoad {
   Any = 'any',
@@ -24,13 +27,15 @@ export class SearchComponent implements OnInit {
 
   workLoadOptions = Object.keys(WorkLoad).map(wl => WorkLoad[wl]);
 
-  constructor() { }
+  searchState$: Observable<SearchState>
+
+  constructor(private store: Store<{ searchState: SearchState }>) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log('submit ', this.searchState);
+    this.store.dispatch(new SetSearchState(this.searchState));
   }
 
 }

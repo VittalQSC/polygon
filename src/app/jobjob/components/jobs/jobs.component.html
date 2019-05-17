@@ -1,6 +1,7 @@
 <div>
-  <div class="jobs_wrapper">
-    <job *ngFor="let jobInfo of jobList"
+  <loading *ngIf="isLoading | async"></loading>
+  <div *ngIf="!(isLoading | async)" class="jobs_wrapper">
+    <job *ngFor="let jobInfo of jobList | async"
           [title]="jobInfo.title"
           [company]="jobInfo.company"
           [company_logo]="jobInfo.company_logo"
@@ -10,5 +11,4 @@
           [how_to_apply]="jobInfo.how_to_apply"
     ></job>
   </div>
-  <loading *ngIf="jobList.length < 1"></loading>
 </div>

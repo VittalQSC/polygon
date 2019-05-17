@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { JobsService } from '../../services/job.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectJobs, JobjobState, SetSearchState, selectJobsLoading } from '../../../store/reducers';
 
 @Component({
   selector: 'jobs',
@@ -7,12 +9,11 @@ import { JobsService } from '../../services/job.service';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  jobList:any[] = [];
+  jobList:Observable<any> = this.store.select(selectJobs);
+  isLoading: Observable<boolean> = this.store.select(selectJobsLoading);
 
-  constructor(private jobsService: JobsService) { }
+  constructor(private store: Store<JobjobState>) { }
 
-  ngOnInit() {
-    this.jobsService.getJobs().subscribe(jobs => this.jobList = jobs);
-  }
+  ngOnInit() {  }
 
 }

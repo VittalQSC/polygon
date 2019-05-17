@@ -8,7 +8,8 @@ export class JobsService {
 
     constructor(private http: HttpClient) { }
     
-    getJobs():Observable<any[]> {
+    getJobs(searchState):Observable<any[]> {
+        console.log('searchState', searchState);
         return this.http.get<any[]>(this.url);
     }
 }
