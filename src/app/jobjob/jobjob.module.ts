@@ -10,7 +10,9 @@ import { SearchComponent } from './components/search/search.component';
 import { StoreModule } from '@ngrx/store';
 import { searchReducer, jobsReducer, jobsLoadingReducer } from '../store/reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { JobsEffects } from './components/jobs/jobs.effects';
+import { JobsEffects } from './store/effects/jobs.effects';
+
+import * as fromJobjob from './store/reducers';
 
 @NgModule({
   declarations: [JobComponent, JobsComponent, SearchComponent],
@@ -19,11 +21,7 @@ import { JobsEffects } from './components/jobs/jobs.effects';
     FormsModule,
     HttpClientModule,
     SharedModule,
-    StoreModule.forFeature('jobjob', {
-      searchState: searchReducer,
-      jobs: jobsReducer,
-      jobsLoading: jobsLoadingReducer
-    }),
+    StoreModule.forFeature('jobjob', fromJobjob.reducers),
     EffectsModule.forFeature([JobsEffects]),
   ],
   exports: [

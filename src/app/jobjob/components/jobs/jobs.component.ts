@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectJobs, JobjobState, SetSearchState, selectJobsLoading } from '../../../store/reducers';
+import { selectJobs, selectJobsLoading } from '../../selectors';
+import { JobjobState } from '../../store/reducers';
 
 @Component({
   selector: 'jobs',
