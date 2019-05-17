@@ -1,14 +1,14 @@
 <div>
-  <loading *ngIf="isLoading | async"></loading>
+  <app-loading *ngIf="isLoading | async"></app-loading>
   <div *ngIf="!(isLoading | async)" class="jobs_wrapper">
-    <job *ngFor="let jobInfo of jobList | async"
+    <app-job *ngFor="let jobInfo of jobList | async"
           [title]="jobInfo.title"
           [company]="jobInfo.company"
-          [company_logo]="jobInfo.company_logo"
-          [company_url]="jobInfo.company_url"
+          [companyLogo]="jobInfo.company_logo"
+          [companyUrl]="jobInfo.company_url"
           [location]="jobInfo.location"
           [desctiption]="jobInfo.desctiption"
-          [how_to_apply]="jobInfo.how_to_apply"
-    ></job>
+          [howToApply]="jobInfo.how_to_apply"
+    ></app-job>
   </div>
 </div>

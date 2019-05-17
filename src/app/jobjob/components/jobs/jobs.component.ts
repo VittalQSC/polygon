@@ -5,7 +5,7 @@ import { selectJobs, selectJobsLoading } from '../../selectors';
 import { JobjobState } from '../../store/reducers';
 
 @Component({
-  selector: 'jobs',
+  selector: 'app-jobs',
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss']
 })
