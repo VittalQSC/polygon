@@ -2,6 +2,7 @@
   <app-loading *ngIf="isLoading | async"></app-loading>
   <div *ngIf="!(isLoading | async)" class="jobs_wrapper">
     <app-job *ngFor="let jobInfo of jobList | async"
+          [id]="jobInfo.id"
           [title]="jobInfo.title"
           [company]="jobInfo.company"
           [companyLogo]="jobInfo.company_logo"

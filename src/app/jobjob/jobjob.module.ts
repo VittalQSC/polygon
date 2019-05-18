@@ -13,9 +13,19 @@ import { EffectsModule } from '@ngrx/effects';
 import { JobsEffects } from './store/effects/jobs.effects';
 
 import * as fromJobjob from './store/reducers';
+import { JobsContainerComponent } from './components/jobs-container/jobs-container.component';
+import { Routes, RouterModule } from '@angular/router';
+import { JobDescComponent } from './components/job-desc/job-desc.component';
+
+const jobjobRoutes: Routes = [
+  { path: 'jobjob',  component: JobsContainerComponent, pathMatch: 'full' },
+  { path: 'jobjob/:jobId',  component: JobDescComponent }
+];
 
 @NgModule({
-  declarations: [JobComponent, JobsComponent, SearchComponent],
+  declarations: [
+    JobComponent, JobsComponent, SearchComponent, JobsContainerComponent, JobDescComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,10 +33,13 @@ import * as fromJobjob from './store/reducers';
     SharedModule,
     StoreModule.forFeature('jobjob', fromJobjob.reducers),
     EffectsModule.forFeature([JobsEffects]),
+    RouterModule.forChild(jobjobRoutes)
   ],
   exports: [
     JobsComponent,
-    SearchComponent
+    SearchComponent,
+    JobsContainerComponent,
+    JobDescComponent
   ],
   providers: [ JobsService ]
 })

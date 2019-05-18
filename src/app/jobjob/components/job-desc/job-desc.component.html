@@ -1,0 +1,7 @@
+<a [routerLink]="['/jobjob']">Back</a>
+<div>
+  <div>
+    job id: {{id$ | async}}
+  </div>
+  <div [innerHTML]="description$"></div>
+</div>

@@ -63,6 +63,28 @@ app.get('/positions', (req, res, next) => {
   });  
 });
 
+
+app.get('/positions/:id', (req, res, next) => {
+  https.get(`https://jobs.github.com/positions/${req.params.id}.json`, resp => {
+    let data = '';
+  
+    // A chunk of data has been recieved.
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+  
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+      let job = JSON.parse(data);
+      console.log('job111111', job);
+      res.json(job);
+    });
+  
+  }).on("error", (err) => {
+    res.json({ err: 'not recieved positions' });
+  });
+});
+
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
   res.render('index', { req });

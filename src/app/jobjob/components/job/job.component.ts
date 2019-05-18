@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./job.component.scss']
 })
 export class JobComponent implements OnInit {
+  @Input() id: string;
   @Input() company: string;
   @Input() companyLogo: string;
   @Input() companyUrl: string;
